@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Libertinus+Serif:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+    --font-serif: "Libertinus Serif", serif;
+    --font-sans: "Libre Baskerville", serif;
+    --font-heading: "Baskervville SC", serif;
+}
+
+body {
+    font-family: var(--font-serif);
+}
