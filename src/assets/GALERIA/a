@@ -1,0 +1,55 @@
+import { Link } from "react-router-dom";
+import {Presentacion} from "../Presentacion.jsx"
+import { useState } from "react";
+
+const fotos = [
+    "/GALERIA-WEB/A.webp",
+    "/GALERIA-WEB/B.webp",
+    "/GALERIA-WEB/C.webp",    
+    "/GALERIA-WEB/D.webp",
+    "/GALERIA-WEB/E.webp",
+    "/GALERIA-WEB/F.webp",   
+    "/GALERIA-WEB/G.webp",
+    "/GALERIA-WEB/H.webp",
+    "/GALERIA-WEB/I.webp",      
+
+]
+
+
+
+export const Galeria = () =>{
+    
+    const fotosVisibles = fotos.slice(0, 8);
+    const angulo = 360 / fotosVisibles.length;
+    const [rotacion, setRotacion] = useState(0);
+    
+    const siguiente = () => {
+    setRotacion(rotacion - angulo);
+    };
+    return(
+        <main id="galeria" className="bg-black relative min-h-screen overflow-hidden  px-6 py-28 text-white md:px-10 lg:px-16">
+            <Presentacion />
+
+            <div
+                className="relative mx-auto h-[200px] w-[300px]" style={{ perspective: "1200px" }}>
+                
+                <div className="absolute inset-0" style={{ transformStyle: "preserve-3d" , transform: `rotateY(${rotacion}deg)`,}}>
+                    {fotosVisibles.map((foto, index) => (
+                    <div key={index} className="absolute inset-0 overflow-hidden rounded-xl" style={{ transform: `rotateY(${index * angulo}deg) translateZ(450px)` }}>
+                        <img src={foto} alt="" className="h-full w-full object-cover" />
+                        <div className="opacity-90 absolute inset-0 bg-[#D6A83A]/20 pointer-events-none" />
+                        <div className="opacity-30 absolute inset-0 bg-black pointer-events-none" />
+                    </div>
+                    ))}
+                </div>
+            </div>
+<button
+  onClick={siguiente}
+  className="mt-10 border border-[#d7a719] px-6 py-3 text-[#d7a719]"
+>
+  Siguiente
+</button>
+
+        </main>
+    )
+}

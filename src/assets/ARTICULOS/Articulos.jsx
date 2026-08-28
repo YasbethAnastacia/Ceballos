@@ -66,9 +66,9 @@ export const Articulos = () => {
     >
       <div className="absolute inset-0">
         <img
-          src="/ARTICULOS/portada2.jpg"
+          src="/ARTICULOS/portada5.png"
           alt=""
-          className="h-full w-full object-cover object-top opacity-50"
+          className="h-full w-full object-cover object-top opacity-80"
         />
 
         <div className="absolute inset-0 bg-black/45" />

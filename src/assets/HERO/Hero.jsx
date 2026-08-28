@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
-    <main id="inicio" className="relative min-h-screen overflow-hidden">
+    <main id="inicio" className="relative min-h-screen overflow-hidden ">
       <div className="relative min-h-screen md:hidden">
         <img
-          src="/HERO/PORTADAAcel.png"
+          src="/HERO/cel.webp"
           alt="Artículos Religiosos Ceballos"
           className="absolute inset-0 h-full w-full object-cover object-[58%_center]"
         />
@@ -74,7 +74,7 @@ export const Hero = () => {
 
       <div className="relative hidden min-h-screen md:block">
         <img
-          src="/HERO/PORTADAA.png"
+          src="/HERO/escritorio.webp"
           alt="Artículos Religiosos Ceballos"
           className="absolute inset-0 -z-30 h-full w-full object-cover object-center"
         />

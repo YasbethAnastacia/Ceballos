@@ -1,0 +1,67 @@
+import { Presentacion } from "../Presentacion.jsx";
+import { useState, useEffect } from "react";
+
+const fotos = [
+  "/GALERIA-WEB/A.webp",
+  "/GALERIA-WEB/B.webp",
+  "/GALERIA-WEB/C.webp",
+  "/GALERIA-WEB/D.webp",
+  "/GALERIA-WEB/E.webp",
+  "/GALERIA-WEB/F.webp",
+  "/GALERIA-WEB/G.webp",
+  "/GALERIA-WEB/H.webp",
+  "/GALERIA-WEB/I.webp",
+];
+
+export const Galeria = () => {
+  const fotosVisibles = fotos.slice(0, 8);
+  const angulo = 360 / fotosVisibles.length;
+  const [rotacion, setRotacion] = useState(0);
+  const [pausado, setPausado] = useState(false);
+
+  const siguiente = () => {
+    setRotacion((prev) => prev - angulo);
+  };
+
+  useEffect(() => {
+    if (pausado) return;
+
+    const intervalo = setInterval(() => {
+      setRotacion((prev) => prev - angulo);
+    }, 3000);
+
+    return () => clearInterval(intervalo);
+  }, [pausado, angulo]);
+
+  return (
+    <main id="galeria" className="relative min-h-screen overflow-hidden bg-black px-6 py-28 text-white md:px-10 lg:px-16">
+      <Presentacion />
+
+      <div className="relative mx-auto mt-16 flex h-[430px] w-full items-center justify-center" onMouseEnter={() => setPausado(true)} onMouseLeave={() => setPausado(false)}>
+        <div className="relative h-[200px] w-[300px]" style={{ perspective: "1400px" }}>
+          <div className="absolute inset-0 transition-transform duration-1000 ease-in-out" style={{ transformStyle: "preserve-3d", transform: `rotateY(${rotacion}deg)` }}>
+            {fotosVisibles.map((foto, index) => (
+                /*, backfaceVisibility: "hidden" */
+              <div key={index} className="group absolute inset-0 overflow-hidden rounded-[22px] border border-[#d7a719]/60 bg-black shadow-[0_0_30px_rgba(215,167,25,0.18)] transition-all duration-500 hover:scale-110 hover:border-[#f4c542] hover:shadow-[0_0_45px_rgba(215,167,25,0.35)]" style={{ transform: `rotateY(${index * angulo}deg) translateZ(450px)` }}>
+                <img src={foto} alt="" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="pointer-events-none absolute inset-0 bg-[#D6A83A]/20" />
+                <div className="pointer-events-none absolute inset-0 bg-black/30 transition-opacity duration-500 group-hover:bg-black/10" />
+                <div className="pointer-events-none absolute inset-[5px] rounded-[17px] border border-white/10" />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pointer-events-none absolute bottom-0 left-1/2 h-[120px] w-[700px] -translate-x-1/2">
+          {/* AQUÍ VA LA IMAGEN DE LA BASE */}
+        </div>
+      </div>
+
+      <div className="mt-8 flex justify-center">
+        <button onClick={siguiente} className="rounded-full border border-[#d7a719] px-7 py-3 text-[#d7a719] transition duration-300 hover:bg-[#d7a719] hover:text-black">
+          Siguiente
+        </button>
+      </div>
+    </main>
+  );
+};
