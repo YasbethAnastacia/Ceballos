@@ -8,7 +8,7 @@ export const Nosotros = () => {
         >
             <div className="absolute inset-0 h-full w-full">
                 <img
-                    src="/GALERIA-IA/bbb.png"
+                    src="/GALERIA-IA/h.png"
                     alt=""
                     className="h-full w-full object-cover object-top opacity-15"
                 />

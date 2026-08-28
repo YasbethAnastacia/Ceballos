@@ -5,6 +5,8 @@ import { Navbar } from "./assets/Navbar/Navbar.jsx";
 import { Rosarios } from "./assets/ARTICULOS/Rosario.jsx";
 import { Galeria } from "./assets/GALERIA/Galeria.jsx";
 import { Nosotros } from "./assets/NOSOTROS/Nosotros.jsx";
+import { Contacto} from "./assets/CONTACTO/Contacto.jsx";
+import { Ubicacion} from "./assets/UBICACION/Ubicacion.jsx";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         <Route path="/rosarios" element={<Rosarios />} />
         <Route path="/galeria" element={<Galeria />} />
         <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/ubicacion" element={<Ubicacion />} />
       </Routes>
     </>
   );
