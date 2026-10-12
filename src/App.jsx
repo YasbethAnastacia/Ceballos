@@ -4,7 +4,7 @@ import { Chatbot } from "./Chatbot";
 import { Hero as OriginalHero } from "./legacy/Hero";
 import { useEffect, useState } from "react";
 import { Routes, Route, useLocation, Link } from "react-router-dom";
-import { MessageCircle } from "lucide-react";
+import { Navbar } from "./assets/Navbar/Navbar";
 import { LanguageProvider } from "./Language";
 import { useLanguage } from "./useLanguage";
 import { site } from "./site.config";
@@ -45,6 +45,9 @@ function Layout() {
       <a className="fixed -top-[100px] left-[15px] z-50 bg-bg p-[15px] focus:top-2.5" href="#main">
         {t("Saltar al contenido", "Skip to content")}
       </a>
+      <Navbar theme={theme} onToggleTheme={() => {
+        setTheme(current => current === "light" ? "dark" : "light");
+      }} />
       <Routes>
         <Route path="/" element={theme === "dark" ? (
           <div className="bg-black font-serif text-ivory" id="main" tabIndex={-1}>
